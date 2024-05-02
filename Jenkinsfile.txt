@@ -6,24 +6,22 @@ pipeline {
     stages{
         stage('Build Maven'){
             steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Java-Techie-jt/devops-automation']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/siddireddylakshman/mit-sem2-capstone']]])
                 bat 'mvn clean install'
             }
         }
         stage('Build docker image'){
             steps{
                 script{
-                    bat 'docker build -t javatechie/devops-integration .'
+                    bat 'docker build -t student-management-system.jar'
                 }
             }
         }
          stage('Push image to Hub'){
             steps{
-                script{
-                   withCredentials([usernamePassword(credentialsId: 'DockerNew', usernameVariable: 'PEGA_DB_USERNAME', passwordVariable: 'PEGA_DB_PASSWORD')]) {                                    
-                   bat 'docker login -u siddireddy --password-stdin < f:/password.txt' 
-                   }
-                   bat 'docker tag javatechie/devops-integration siddireddy/mymtechproj:myfirstimagepush'
+                script{                                                       
+                   bat 'docker login -u siddireddy --password-stdin < f:/password.txt'                    
+                   bat 'docker tag student-management-system.jar siddireddy/mymtechproj:myfirstimagepush'
                    bat 'docker push siddireddy/mymtechproj:myfirstimagepush'
                 }
             }
