@@ -24,7 +24,7 @@ public class StudentController {
 	@GetMapping("/students")
 	public String listStudents(Model model) {
 		model.addAttribute("students", studentService.getAllStudents());
-		return "students";
+		return "mit_students";
 	}
 	
 	@GetMapping("/students/new")
@@ -33,7 +33,7 @@ public class StudentController {
 		// create student object to hold student form data
 		Student student = new Student();
 		model.addAttribute("student", student);
-		return "create_student";
+		return "mit_create_student_details";
 		
 	}
 	
@@ -46,7 +46,7 @@ public class StudentController {
 	@GetMapping("/students/edit/{id}")
 	public String editStudentForm(@PathVariable Long id, Model model) {
 		model.addAttribute("student", studentService.getStudentById(id));
-		return "edit_student";
+		return "mit_edit_student_details";
 	}
 
 	@PostMapping("/students/{id}")
