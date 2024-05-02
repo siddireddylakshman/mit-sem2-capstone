@@ -13,7 +13,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    bat 'docker build -t docker build -t student-management-system-springboot-main:1.0 .'
+                    bat 'docker build -t student-management-system-springboot-main:1.0 .'
                 }
             }
         }
