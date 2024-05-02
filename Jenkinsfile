@@ -13,7 +13,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    bat 'docker build -t student-management-system.jar'
+                    bat 'docker build -t student-management-system .'
                 }
             }
         }
