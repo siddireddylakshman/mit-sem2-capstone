@@ -20,7 +20,7 @@ pipeline {
          stage('Push image to Hub'){
             steps{
                 script{                                                       
-                   bat 'docker login -u siddireddy --password-stdin < f:/password.txt'                    
+                   bat 'docker login -u siddireddy --password-stdin < c:/manoj/dockerpassword.txt'                    
                    bat 'docker tag student-management-system.jar siddireddy/mymtechproj:myfirstimagepush'
                    bat 'docker push siddireddy/mymtechproj:myfirstimagepush'
                 }
