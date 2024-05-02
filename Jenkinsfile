@@ -21,7 +21,7 @@ pipeline {
             steps{
                 script{                                                       
                    bat 'docker login -u siddireddy --password-stdin < c:/manoj/dockerpassword.txt'                    
-                   bat 'docker tag student-management-system.jar siddireddy/mymtechproj:myfirstimagepush'
+                   bat 'docker tag student-management-system siddireddy/mymtechproj:myfirstimagepush'
                    bat 'docker push siddireddy/mymtechproj:myfirstimagepush'
                 }
             }
